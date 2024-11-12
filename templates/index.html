@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DST Configuration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            overflow: hidden;
+        }
+        #main {
+            margin: 20px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="main">
+            <h1>DST Configuration</h1>
+            <form action="/set_config" method="post">
+                <label for="timezone">Time Zone:</label>
+                <input type="text" id="timezone" name="timezone" required>
+
+                <label for="dst_start">DST Start Date:</label>
+                <input type="date" id="dst_start" name="dst_start" required>
+
+                <label for="dst_end">DST End Date:</label>
+                <input type="date" id="dst_end" name="dst_end" required>
+
+                <label for="notification_preferences">Notification Preferences:</label>
+                <select id="notification_preferences" name="notification_preferences" multiple required>
+                    <option value="email">Email</option>
+                    <option value="push">Push Notification</option>
+                </select>
+
+                <button type="submit">Update Configuration</button>
+            </form>
+            <h2>Local Date and Time</h2>
+            <p>{{ local_datetime }}</p>
+        </div>
+    </div>
+</body>
+</html>
